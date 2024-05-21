@@ -10,6 +10,8 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
-    "express": "^4.19.2"
+    "dns": "^0.2.2",
+    "express": "^4.19.2",
+    "https": "^1.0.0"
   }
 }
