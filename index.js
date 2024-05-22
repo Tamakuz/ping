@@ -1,24 +1,11 @@
 const express = require('express');
-const https = require('https');
 const app = express();
+const bodyParser = require('body-parser');
 
-// Fungsi untuk memeriksa koneksi internet dengan melakukan request HTTPS ke Google
-const checkInternetConnection = () => {
-  return new Promise((resolve) => {
-    const request = https.get('https://www.google.com', (response) => {
-      resolve(response.statusCode === 200);
-    });
+app.use(bodyParser.json());
 
-    request.on('error', () => {
-      resolve(false);
-    });
-
-    request.setTimeout(5000, () => {
-      request.destroy();
-      resolve(false);
-    });
-  });
-};
+// Initial state
+let state = true;
 
 // Endpoint root
 app.get('/', (req, res) => {
@@ -27,12 +14,18 @@ app.get('/', (req, res) => {
 
 // Endpoint untuk memeriksa koneksi internet
 app.get('/ping', async (req, res) => {
-  const isConnected = await checkInternetConnection();
-  if (isConnected) {
-    res.status(200).send('Internet connection available');
-  } else {
-    res.status(500).send('No internet connection');
-  }
+  res.status(200).send('Pong');
+});
+
+// Endpoint to get the current state
+app.get('/state', (req, res) => {
+  res.status(200).send(state.toString());
+});
+
+// Endpoint to update the state
+app.get('/change-state', (req, res) => {
+  state = !state;
+  res.status(200).send(`State updated to: ${state}`);
 });
 
 // Menjalankan server pada port yang ditentukan
