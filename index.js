@@ -23,8 +23,13 @@ app.get('/state', (req, res) => {
 });
 
 // Endpoint to update the state
-app.get('/change-state', (req, res) => {
-  state = !state;
+app.get('/change-true', (req, res) => {
+  state = true;
+  res.status(200).send(`State updated to: ${state}`);
+});
+
+app.get('/change-false', (req, res) => {
+  state = false;
   res.status(200).send(`State updated to: ${state}`);
 });
 
