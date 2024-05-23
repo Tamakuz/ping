@@ -39,7 +39,7 @@ app.get('/change-true-piko', (req, res) => {
 });
 
 app.get('/change-false', (req, res) => {
-  state = false;
+  statePiko = false;
   res.status(200).send(`State updated to: ${state}`);
 });
 
