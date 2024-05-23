@@ -37,17 +37,17 @@ app.get('/change-false', (req, res) => {
 
 //piko state
 app.get('/state-piko', (req, res) => {
-  res.status(200).send(state.toString());
+  res.status(200).send(statePiko.toString());
 });
 
 app.get('/change-true-piko', (req, res) => {
   statePiko = true;
-  res.status(200).send(`State updated to: ${state}`);
+  res.status(200).send(`State updated to: ${statePiko}`);
 });
 
 app.get('/change-false-piko', (req, res) => {
   statePiko = false;
-  res.status(200).send(`State updated to: ${state}`);
+  res.status(200).send(`State updated to: ${statePiko}`);
 });
 
 
