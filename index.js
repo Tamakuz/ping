@@ -6,6 +6,7 @@ app.use(bodyParser.json());
 
 // Initial state
 let state = true;
+let statePiko = true
 
 // Endpoint root
 app.get('/', (req, res) => {
@@ -24,6 +25,15 @@ app.get('/state', (req, res) => {
 
 // Endpoint to update the state
 app.get('/change-true', (req, res) => {
+  state = true;
+  res.status(200).send(`State updated to: ${state}`);
+});
+
+app.get('/state-piko', (req, res) => {
+  res.status(200).send(state.toString());
+});
+
+app.get('/change-true-piko', (req, res) => {
   state = true;
   res.status(200).send(`State updated to: ${state}`);
 });
