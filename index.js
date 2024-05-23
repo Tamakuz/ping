@@ -29,19 +29,27 @@ app.get('/change-true', (req, res) => {
   res.status(200).send(`State updated to: ${state}`);
 });
 
+app.get('/change-false', (req, res) => {
+  state = false;
+  res.status(200).send(`State updated to: ${state}`);
+});
+
+
+//piko state
 app.get('/state-piko', (req, res) => {
   res.status(200).send(state.toString());
 });
 
 app.get('/change-true-piko', (req, res) => {
-  state = true;
+  statePiko = true;
   res.status(200).send(`State updated to: ${state}`);
 });
 
-app.get('/change-false', (req, res) => {
+app.get('/change-false-piko', (req, res) => {
   statePiko = false;
   res.status(200).send(`State updated to: ${state}`);
 });
+
 
 // Menjalankan server pada port yang ditentukan
 const PORT = process.env.PORT || 3000;
